@@ -19,12 +19,13 @@ jobs:
       # https://github.com/cedx/setup-dart
       - name: Setup Dart
         uses: cedx/setup-dart@v2
-      - name: Install webdev tool
+      - name: Get dependencies
+        run: pub get
+      - name: Build project
         run: |
           pub global activate webdev
           echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
-      - name: Build project
-        run: webdev build
+          webdev build
       # https://github.com/marketplace/actions/deploy-to-github-pages
       - name: Deploy with GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.0.0-beta-01
